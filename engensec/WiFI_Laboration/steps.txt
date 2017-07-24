@@ -1,0 +1,31 @@
+
+get website
+
+- Is the page using Ip only?
+
+  - Abnormaly long URL?
+  - multiple subdomains with long and random characters?
+  - Does it use prefixes or suffixes?
+      - Replacing similar characters in URL?)
+      - Hexadecimal characters in URL?
+      - check for website for homographic characters 
+    - spelling errors in DNS name?
+   
+
+
+
+- Is the website using SSL certificate?
+- Is the certificate of authority in trusted certification centers list
+
+
+- Is the lifetime of the domain abnormally small?(check of rebirth on another IP )
+- Is the DNS TTL abnormaly small?
+
+Content checking
+    - Spelling errors on the webpage?
+    - Check sourcecode for javascript redirected pages to another domain
+- 
+
+- Check the site on virustotal
+
+

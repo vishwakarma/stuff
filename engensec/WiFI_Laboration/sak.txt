@@ -1,0 +1,146 @@
+
+
+    * darkstat 3.0.719
+    * graphs
+    * hosts
+    * homepage
+***** Hosts *****
+(1-45 of 45)
+IP              Hostname                   MAC     In        Out       Total     Last
+                                           Address                               seen
+                                           b8:27:
+192.168.97.114  (none)                     eb:30:  4,530,809 177,103   4,707,912 48 secs
+                                           e0:85
+                                           c4:71:                                21
+172.217.20.206  waw02s08-in-f14.1e100.net  fe:12:  99,861    3,881,657 3,981,518 mins, 5
+                                           5b:bf                                 secs
+                server-52-85-180-          c4:71:                                23
+52.85.180.118   118.fra50.r.cloudfront.net fe:12:  15,439    385,727   401,166   mins,
+                                           5b:bf                                 56 secs
+                server-52-85-180-          c4:71:                                23
+52.85.180.99    99.fra50.r.cloudfront.net  fe:12:  4,285     69,882    74,167    mins,
+                                           5b:bf                                 55 secs
+                                           c4:71:                                21
+172.217.18.78   bud02s26-in-f14.1e100.net  fe:12:  3,994     51,504    55,498    mins,
+                                           5b:bf                                 18 secs
+                ec2-54-213-10-214.us-west- c4:71:                                14
+54.213.10.214   2.compute.amazonaws.com    fe:12:  3,574     41,822    45,396    mins, 6
+                                           5b:bf                                 secs
+                                           c4:71:                                2 mins,
+71.19.155.121   unix4lyfe.org              fe:12:  10,414    34,012    44,426    29 secs
+                                           5b:bf
+                                           ff:ff:
+192.168.97.255  (none)                     ff:ff:  31,790    0         31,790    (never)
+                                           ff:ff
+                                           c4:71:                                2 mins,
+192.168.0.1     vega.lp                    fe:12:  9,507     18,252    27,759    29 secs
+                                           5b:bf
+                                           ff:ff:
+255.255.255.255 (none)                     ff:ff:  16,971    0         16,971    (never)
+                                           ff:ff
+                ec2-54-149-96-195.us-west- c4:71:                                16
+54.149.96.195   2.compute.amazonaws.com    fe:12:  2,308     7,951     10,259    mins,
+                                           5b:bf                                 15 secs
+                server-52-85-180-          c4:71:                                24
+52.85.180.59    59.fra50.r.cloudfront.net  fe:12:  2,057     7,811     9,868     mins, 6
+                                           5b:bf                                 secs
+                                           c4:71:                                15
+93.184.220.29   (none)                     fe:12:  4,404     5,208     9,612     mins,
+                                           5b:bf                                 54 secs
+                                           48:d2:
+192.168.97.140  lenovo-pc.classz5.lp       24:0f:  0         9,249     9,249     14 secs
+                                           5e:17
+                                           c4:71:
+192.168.0.10    (none)                     fe:12:  9,109     0         9,109     (never)
+                                           5b:bf
+                ec2-52-25-203-53.us-west-  c4:71:                                17
+52.25.203.53    2.compute.amazonaws.com    fe:12:  2,756     5,767     8,523     mins, 3
+                                           5b:bf                                 secs
+                                           18:3d:
+192.168.97.159  win-okk1pgf5lqo.classz5.lp a2:14:  0         8,270     8,270     43 secs
+                                           79:94
+                ec2-52-39-237-157.us-west- c4:71:                                24
+52.39.237.157   2.compute.amazonaws.com    fe:12:  1,609     5,822     7,431     mins,
+                                           5b:bf                                 55 secs
+                ec2-52-33-75-90.us-west-   c4:71:                                15
+52.33.75.90     2.compute.amazonaws.com    fe:12:  1,720     4,657     6,377     mins, 9
+                                           5b:bf                                 secs
+                ec2-52-33-209-128.us-west- c4:71:                                24
+52.33.209.128   2.compute.amazonaws.com    fe:12:  1,807     4,338     6,145     mins,
+                                           5b:bf                                 57 secs
+                                           a4:5e:                                11
+192.168.97.201  macbook-pro-ps.classz5.lp  60:d4:  0         5,864     5,864     mins,
+                                           1a:15                                 50 secs
+                ec2-35-167-184-4.us-west-  c4:71:                                25
+35.167.184.4    2.compute.amazonaws.com    fe:12:  1,663     4,101     5,764     mins, 6
+                                           5b:bf                                 secs
+                                           40:e2:                                7 mins,
+0.0.0.0         (none)                     30:63:  0         5,425     5,425     24 secs
+                                           6f:f1
+                                           00:21:
+192.168.97.120  heimdall.classz5.lp        6a:11:  0         4,508     4,508     28 secs
+                                           5c:4c
+                                           74:c6:                                1 min,
+192.168.97.171  desktop-hlri6mq.classz5.lp 3b:53:  0         3,982     3,982     46 secs
+                                           08:6d
+                                           68:a8:                                2 mins,
+192.168.97.94   anderss-mbp.classz5.lp     6d:44:  0         3,200     3,200     20 secs
+                                           6d:d2
+                                           c4:71:
+192.168.97.3    (none)                     fe:12:  0         2,624     2,624     56 secs
+                                           5b:bf
+                                           cc:af:                                6 mins,
+192.168.97.250  leoleg.classz5.lp          78:11:  1,176     1,240     2,416     26 secs
+                                           b6:2f
+                                           40:e2:                                4 mins,
+192.168.97.172  (none)                     30:63:  0         2,172     2,172     17 secs
+                                           6f:f1
+                                           30:3a:                                5 mins,
+192.168.97.196  (none)                     64:e5:  0         718       718       16 secs
+                                           d6:16
+                                           c4:71:                                3 mins,
+87.245.216.19   (none)                     fe:12:  432       276       708       45 secs
+                                           5b:bf
+                                           c4:71:                                1 min,
+192.168.0.14                               fe:12:  328       330       658       44 secs
+                                           5b:bf
+                                           70:85:                                9 mins,
+192.168.97.177  ws11r504k28.classz5.lp     c2:0a:  0         547       547       19 secs
+                                           9e:0d
+                                           70:85:                                7 mins,
+192.168.97.141  ws02r504k28.classz5.lp     c2:0a:  0         536       536       16 secs
+                                           98:eb
+                                           70:85:                                7 mins,
+192.168.97.186  ws07r504k28.classz5.lp     c2:0a:  0         458       458       12 secs
+                                           9f:96
+                                           70:85:                                7 mins,
+192.168.97.121  ws12r504k28.classz5.lp     c2:0a:  0         458       458       18 secs
+                                           99:64
+                                           c4:71:
+193.34.155.4    ns4.as41781.net            fe:12:  228       228       456       48 secs
+                                           5b:bf
+                                           28:b2:                                23
+192.168.97.30   as.classz5.lp              bd:bd:  0         390       390       mins,
+                                           da:5d                                 20 secs
+                                           c4:71:                                10
+87.245.216.34                              fe:12:  216       112       328       mins,
+                                           5b:bf                                 42 secs
+                                           c4:71:                                24
+216.58.209.78   waw02s06-in-f14.1e100.net  fe:12:  216       112       328       mins,
+                                           5b:bf                                 10 secs
+                                           70:85:                                7 mins,
+192.168.97.44                              c2:0a:  0         229       229       18 secs
+                                           99:4b
+                                           f4:06:
+192.168.97.74                              69:6b:  0         88        88        45 secs
+                                           23:bc
+fe80::3892:                                40:e2:                                7 mins,
+55db:83ed:ccaa                             30:63:  0         72        72        44 secs
+                                           6f:f1
+                                           33:33:
+ff02::1                                    00:00:  72        0         72        (never)
+                                           00:01
+                                           3c:a9:                                16
+192.168.97.45                              f4:0f:  0         43        43        mins,
+                                           2b:1c                                 22 secs
+<<< prev page | full table | next_page_>>>
