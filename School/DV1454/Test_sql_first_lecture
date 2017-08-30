@@ -1,0 +1,18 @@
+USE DV1454_adba14
+IF OBJECT_ID('DV1454_adba14.Person','U') IS NOT NULL
+DROP TABLE Person
+
+CREATE TABLE Person (
+  IdPerson INTEGER PRIMARY KEY,
+  namePerson CHAR(20) NOT NULL,
+  city CHAR(20) DEFAULT 'SIN CITY BABY',
+  phoneNumber char(20)
+);
+INSERT INTO Person (IdPerson,namePerson,phoneNumber) VALUES
+  (1,'Hello','04242413')
+INSERT INTO PERSON VALUES(2,'kalle','Kalle-K ToWn','070-000000')
+SELECT * FROM Person WHERE IdPerson = '2'
+
+UPDATE Person SET namePerson = 'BOATY MCBOATFACE' WHERE IdPerson =1
+SELECT * FROM Person
+

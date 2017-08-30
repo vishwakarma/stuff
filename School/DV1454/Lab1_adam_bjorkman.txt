@@ -1,0 +1,23 @@
+USE DV1454_adba14
+
+CREATE TABLE Suppliers(
+
+  S VARCHAR(5) PRIMARY KEY NOT NULL,
+  SNAME VARCHAR(30) NOT NULL DEFAULT 'Shitty supplier with no name',
+  City VARChar(20) NOT NULL DEFAULt 'Sin City'
+);
+INSERT INTO Suppliers VALUES ('S1','Smith','London')
+INSERT INTO Suppliers VALUES ('S2','Jones','Paris')
+INSERT INTO Suppliers VALUES ('S3','Blake','Paris')
+INSERT INTO Suppliers VALUES ('S4','Clark','London')
+INSERT INTO Suppliers VALUES ('S5','Adams','Athens')
+
+
+CREATE TABLE Products(
+  P VARCHAR(5) PRIMARY KEY NOT NULL,
+  PNAME VARCHAR(30) NOT NULL DEFAULT 'Shitty supplier with no name',
+  Color VARCHAR(6) NOT NULL  DEFAULT '#FFFFFF',
+  Weight INT DEFAULT 0,
+  Price INT DEFAULT 0
+);
+
