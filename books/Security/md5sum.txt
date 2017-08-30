@@ -1,0 +1,15 @@
+cf5f24a54870486eb35f5b355cb27633  Addison.Wesley.TCP.IP.Illustrated.Volume.1.2nd.Edition.Nov.2011.pdf
+5e32d7b6516a180875026e3aba8cfc0a  Digital Evidence and Computer Crime.pdf
+486dfa8ae46337e9fbd0a0c0e1a7db29  Hakin9 On Demand - 201203_The Guide to Backtrack.pdf
+40538abf930ee694d304f8a531117ce2  Handbook of Cryptography-20170726T063842Z-001.zip
+20240db1b30580d7236a7b848c88384a  Instant Penetration Testing- Setting Up a Test Lab How-to.pdf
+f23bd1411cf8627dc0b4aafd1b87dc28  [itpub.net]Syngress - Violent Python.pdf
+76e2d4564cb56655c6465a5ee61a4f17  Kingpin_ How One Hacker Took Over the Bi - Kevin Poulsen.pdf
+6fcd9d7a6dc88b7c6383b08f33c00f5d  Lockpicking Detail Overkill[evva3ks].pdf
+ba82a76401df0b654d619f1a480109db  md5sum.txt
+7b5f38529c3cd5f6f28aaa6cf0f75609  Metasploit.pdf
+5d1a9cebb99640c52b7f433002fbe2ec  Nmap Network Discovery III - reduced size.pdf
+e05befb15dc869d8e36a30661533ca44  Offensive Security - Penetration Testing with BackTrack (Lab Guide)v3.2.pdf
+d6f28a997e63578567a6b75a52eaa6de  sha512.txt
+cf0a26b2fd19153621fb93d704edd0ae  The Hacker's Manual (2015).pdf
+a46aa7daacc8e16f7545c9756b3bf128  TLCL-09.12.pdf
