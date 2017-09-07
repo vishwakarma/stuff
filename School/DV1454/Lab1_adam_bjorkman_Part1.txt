@@ -1,0 +1,140 @@
+USE DV1454_adba14
+DROP TABLE Deliveries
+DROP TABLE Products
+DROP TABLE Suppliers
+CREATE TABLE Suppliers(
+
+  S VARCHAR(5) PRIMARY KEY NOT NULL,
+  SNAME VARCHAR(30) NOT NULL DEFAULT 'Shitty supplier with no name',
+  City VARChar(20) NOT NULL DEFAULt 'Sin City'
+);
+INSERT INTO Suppliers VALUES ('S1','Smith','London')
+INSERT INTO Suppliers VALUES ('S2','Jones','Paris')
+INSERT INTO Suppliers VALUES ('S3','Blake','Paris')
+INSERT INTO Suppliers VALUES ('S4','Clark','London')
+INSERT INTO Suppliers VALUES ('S5','Adams','Athens')
+
+
+CREATE TABLE Products(
+  P VARCHAR(5) PRIMARY KEY NOT NULL,
+  Pname VARCHAR(30) NOT NULL DEFAULT 'Shitty supplier with no name',
+  Color VARCHAR(6) NOT NULL  DEFAULT '#FFFFFF',
+  Weight INT DEFAULT 0,
+  Price INT DEFAULT 0
+);
+
+INSERT INTO Products VALUES ('P1','Nut','Red','12','45')
+INSERT INTO Products VALUES ('P2','Bolt','Green','17','23')
+INSERT INTO Products VALUES ('P3','Screw','Blue','17','12')
+INSERT INTO Products VALUES ('P4','Screw','Red','14','40')
+INSERT INTO Products VALUES ('P5','Cam','Blue','12','44')
+INSERT INTO Products VALUES ('P6','Cog','Red','19','12')
+
+CREATE TABLE Deliveries (
+  S VARCHAR(5)  NOT NULL FOREIGN KEY REFERENCES Suppliers(S),
+  P VARCHAR(5)  NOT NULL FOREIGN KEY  REFERENCES Products(P),
+  QTY INT DEFAULT 0,
+  PRIMARY KEY (S,P)
+);
+
+INSERT INTO Deliveries VALUES ('S1','P1','300')
+INSERT INTO Deliveries VALUES ('S1','P2','200')
+INSERT INTO Deliveries VALUES ('S1','P3','400')
+INSERT INTO Deliveries VALUES ('S1','P4','200')
+INSERT INTO Deliveries VALUES ('S1','P5','100')
+INSERT INTO Deliveries VALUES ('S1','P6','100')
+
+
+INSERT INTO Deliveries VALUES ('S2','P1','300')
+INSERT INTO Deliveries VALUES ('S2','P2','400')
+
+INSERT INTO Deliveries VALUES ('S3','P2','200')
+
+INSERT INTO Deliveries VALUES ('S4','P2','200')
+INSERT INTO Deliveries VALUES ('S4','P4','300')
+INSERT INTO Deliveries VALUES ('S4','P5','400')
+
+SELECT * FROM Deliveries
+
+--3a
+SELECT * FROM Suppliers
+--3b
+SELECT * FROM Suppliers ORDER BY SNAME
+--3c
+SELECT * FROM Suppliers WHERE City = 'London' ORDER BY SNAME
+--3d
+SELECT * FROM Products WHERE Weight < 15
+--3e
+SELECT * FROM Products WHERE Price > 20 AND Color = 'Red'
+--3f
+SELECT * FROM Products WHERE Color = 'Red' AND Weight > 13 AND Price > 43
+
+--Aggregated functions
+--4a
+SELECT SUM(Weight) FROM Products
+--4b
+SELECT AVG(Weight) FROM Products
+--4c
+SELECT AVG(Price) FROM Products WHERE Color = 'green'
+--4d
+SELECT SUM(Weight) FROM Products GROUP BY Color
+
+--5a
+SELECT * FROM Deliveries,Products
+--5b
+SELECT Pname,Color,Weight, Price, Products.P, S, QTY FROM Products INNER JOIN Deliveries on Products.P = Deliveries.P
+--5c
+SELECT * FROM Suppliers INNER JOIN Deliveries on Suppliers.S = Deliveries.S WHERE QTY > 200
+--5d
+SELECT DISTINCT * FROM Suppliers INNER JOIN Deliveries on Suppliers.S = Deliveries.S WHERE QTY > 200
+--5e
+SELECT DISTINCT * FROM Suppliers INNER JOIN Deliveries on Suppliers.S = Deliveries.S WHERE QTY > 200 AND CITY = 'Paris'
+
+---------------------------------------Uppgift 6-----------------------------------
+--1. Show the name of all products of which 300 or more are sold in a delivery.
+SELECT Products.Pname FROM Products,Suppliers,Deliveries WHERE QTY >= 300
+--2. Remove duplicates from 6.1
+SELECT DISTINCT Products.Pname FROM Products,Suppliers,Deliveries WHERE QTY >= 300
+--3. Show all names of all products delivered and the name of all suppliers these products are delivered to.
+SELECT DISTINCT Products.Pname, Deliveries.S FROM Products,Suppliers,Deliveries WHERE QTY >= 300
+---------------------------------------Uppgift 7-----------------------------------
+--1. Show the name of all suppliers and the quantity of the deliveries of all suppliers (use INNER JOIN).
+SELECT Suppliers.SNAME, COUNT(Deliveries.QTY) AS 'QDelivery' FROM Suppliers INNER JOIN  Deliveries ON Deliveries.S = Suppliers.S GROUP BY SNAME
+--2. The supplier Adams is missing, find out why Adams is not in the result found in 7.1.
+------ He is not on the list of Suppliers who have delivered
+--3. Change your INNER JOIN (in 7.1) to an OUTER JOIN so also Adams is listed.
+SELECT Suppliers.SNAME, COUNT(Deliveries.QTY) AS 'QDelivery' FROM Suppliers FULL OUTER JOIN  Deliveries ON Deliveries.S = Suppliers.S GROUP BY SNAME
+--4. Be aware of the difference between INNER and OUTER JOIN and the use of LEFT and RIGHT in OUTER JOINS.
+
+---------------------------------------Uppgift 8-----------------------------------
+--1. Show the name of the supplier(s) who have delivered more than 100.
+SELECT DISTINCT SNAME FROM Suppliers JOIN Deliveries ON Suppliers.S = Deliveries.S where QTY > 200
+--2. Show the quantity of the largest delivery.
+SELECT MAX(Deliveries.QTY) AS 'Max value' FROM Deliveries
+--3. Show the name of the supplier(s) who have delivered the largest delivery (as a nested query).
+SELECT DISTINCT SNAME FROM Suppliers JOIN Deliveries ON Suppliers.S = Deliveries.S where QTY = (SELECT MAX(Deliveries.QTY) AS 'Max value' FROM Deliveries)
+
+---------------------------------------Uppgift 9-----------------------------------
+--1. Show the names of all products that have weight 17, 14 or 12
+SELECT Pname FROM Products WHERE Weight = 17 OR  Weight = 14 OR Weight = 12
+--2. Rewrite the 9.1 using IN
+SELECT Pname FROM Products WHERE Weight IN (17,14,12)
+--3. Use IN while showing the names of all products that not have the weight 17, 14 and 10.
+SELECT Pname FROM Products WHERE Weight NOT IN (17,14,12)
+
+---------------------------------------Uppgift 10-----------------------------------
+--1. Show all products that have a price between 40 and 50.
+SELECT * FROM Products WHERE Price BETWEEN 40 AND 50
+--2. Show the name of all products that have a weight between 14 and 18 and are delivered to London
+SELECT DISTINCT Pname, Suppliers.City FROM Products,Suppliers WHERE Weight BETWEEN 14 AND 18 AND City = 'London'
+
+---------------------------------------Uppgift 11-----------------------------------
+--1. How many products are delivered by each supplier?
+SELECT Deliveries.S, SUM(Deliveries.QTY) AS 'Total products' FROM Deliveries GROUP BY Deliveries.S
+--2. How many suppliers have delivered blue articles?
+SELECT DISTINCT COUNT(Products.Color) FROM Products JOIN Deliveries ON Products.P = Deliveries.P WHERE Products.Color = 'Blue'
+--3. How many articles are green?
+SELECT DISTINCT COUNT(Products.Color) FROM Products JOIN Deliveries ON Products.P = Deliveries.P WHERE Products.Color = 'Green'
+--3. How many articles are green? option 2
+SELECT COUNT(Products.Color) FROM Products
+
