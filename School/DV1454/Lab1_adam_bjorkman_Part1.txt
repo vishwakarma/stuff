@@ -20,7 +20,7 @@ CREATE TABLE Products(
   Pname VARCHAR(30) NOT NULL DEFAULT 'Shitty supplier with no name',
   Color VARCHAR(6) NOT NULL  DEFAULT '#FFFFFF',
   Weight INT DEFAULT 0,
-  Price INT DEFAULT 0
+  Price FLOAT DEFAULT 0
 );
 
 INSERT INTO Products VALUES ('P1','Nut','Red','12','45')
@@ -32,7 +32,7 @@ INSERT INTO Products VALUES ('P6','Cog','Red','19','12')
 
 CREATE TABLE Deliveries (
   S VARCHAR(5)  NOT NULL FOREIGN KEY REFERENCES Suppliers(S),
-  P VARCHAR(5)  NOT NULL FOREIGN KEY  REFERENCES Products(P),
+  P VARCHAR(5)  NOT NULL,
   QTY INT DEFAULT 0,
   PRIMARY KEY (S,P)
 );
@@ -138,3 +138,81 @@ SELECT DISTINCT COUNT(Products.Color) FROM Products JOIN Deliveries ON Products.
 --3. How many articles are green? option 2
 SELECT COUNT(Products.Color) FROM Products
 
+
+--------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------PART 2----------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+
+--1. Delete the supplier with the name "Adams" and check if the supplier is deleted
+SELECT * FROM Suppliers
+DELETE FROM Suppliers WHERE SNAME = 'Adams'
+SELECT * FROM Suppliers
+--2. Supplier "Jones" moved from Paris to Hallabro. Make the change in the database.
+UPDATE Suppliers SET City = 'Hallabro' WHERE SNAME = 'JONES'
+SELECT * FROM Suppliers
+--3. Move all suppliers living in London to Tingsryd.
+UPDATE Suppliers SET City = 'Tingsryd' WHERE City = 'London'
+SELECT * FROM Suppliers
+--4. Add supplier "Jackson" living in Stockholm.
+INSERT INTO Suppliers VALUES ('S5','Jackson','Stockholm')
+--5. Finally the € is introduced in Sweden. Devide all product prices by 10.
+SELECT Products.Price FROM Products
+UPDATE Products SET Price = Price/10
+SELECT Products.Price FROM Products
+--6. A new paint causes all red products to be a little heavier. Add 2 to the weight of all red products.
+SELECT * FROM Products
+UPDATE Products SET Weight = Weight+2
+SELECT * FROM Products
+
+---------views-----------
+--1. Create a VIEW (VRedProducts) containing all attributes of all red products (see slides, the manual and W3Schools: CREATE VIEW).
+CREATE VIEW  VRedProducts AS SELECT * FROM Products WHERE Color = 'Red'
+--2. Show deliveries of red products. Use your view for joining.
+SELECT * FROM VRedProducts INNER JOIN Deliveries  ON VRedProducts.P = Deliveries.P
+--3. Make a view (VTotalWeight) on product showing the total weight of all products.
+CREATE VIEW VTotalWeight AS SELECT SUM(Products.Weight) AS 'Total weight' FROM Products
+SELECT * FROM VTotalWeight
+DROP VIEW VTotalWeight
+INSERT INTO VRedProducts VALUES('P7','Spike','red',13,20)
+SELECT * FROM VTotalWeight
+--4. Cant insert a row into something that only returns the total of a unit using aggregate functions.
+
+---------DROPS-----------
+--1. Drop the table P
+DROP TABLE Products
+--2.
+-- Needed to remove foreign key.
+--4.
+SELECT * FRom Suppliers
+DELETE FROM Suppliers
+--5.
+-- DROP = removes table completely. Delete just removes content.
+
+--------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------PART 3----------------------------------------------------------
+-------------DV1454_adba14@194.47.129.139-------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE Employee (
+  Nr    INT PRIMARY KEY         NOT NULL DEFAULT 0,
+  eName VARCHAR(20) NOT NULL DEFAULT 'NoName Employee',
+  Boss  INT FOREIGN KEY REFERENCES Employee(Nr)
+);
+
+INSERT INTO Employee (Nr,eName, Boss) VALUES
+(1,'Johansson',NULL),
+(2,'Åkesson',1),
+(3,'Arvidsson',1),
+(4,'Svensson',3),
+(5,'Karlsson',3),
+(6,'Lundin',4)
+--------------------2---------------------
+--1.
+SELECT * FROM Employee ORDER BY eName
+--2.
+SELECT Emp.eName, Employee.eName as Name from Employee as Emp JOIN Employee on Emp.Boss = Employee.Nr
+--3.
+SELECT Emp.eName, Employee.eName as Name from Employee as Emp LEFT JOIN Employee on Emp.Boss = Employee.Nr
