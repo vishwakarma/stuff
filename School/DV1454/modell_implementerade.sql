@@ -3,7 +3,7 @@ USE DV1454_adba14
 
 Create table TrainStation(
     nrOfTracks INT NOT NULL,
-    stationName VARCHAR(20) PRIMARY KEY DEFAULT 'Shitty station with no name'
+    stationName VARCHAR(20) PRIMARY KEY DEFAULT 'station with no name'
 );
 Create table Train(
     trainNr INT PRIMARY KEY  DEFAULT 1337,
