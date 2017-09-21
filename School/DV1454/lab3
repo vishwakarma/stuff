@@ -1,0 +1,111 @@
+--
+-- Create the database schema for lab 3
+--
+
+--
+-- Table Account
+--
+DROP TABLE AccountLog
+DROP TABLE Account
+GO
+CREATE TABLE Account
+(
+  -- Primary key
+  nrAccount      INT         NOT NULL,
+  PRIMARY KEY (nrAccount),
+
+  -- Attributes
+  nameAccount    VARCHAR(15) NOT NULL,
+  balanceAccount MONEY       NOT NULL
+);
+GO
+INSERT INTO Account VALUES (1, 'Nils', 500)
+INSERT INTO Account VALUES (2, 'Sven', 150)
+INSERT INTO Account VALUES (3, 'Ingvar', 0)
+INSERT INTO Account VALUES (4, 'Anna', 500)
+INSERT INTO Account VALUES (5, 'Jenny', 850)
+
+--
+-- Table AccountLog
+--
+GO
+CREATE TABLE AccountLog
+(
+  -- Primary Key
+  idAccountLog         INT IDENTITY (1, 1),
+  PRIMARY KEY (idAccountLog),
+
+  -- Foreign Key
+  AccountLog_nrAccount INT      NOT NULL,
+  FOREIGN KEY (AccountLog_nrAccount) REFERENCES Account (nrAccount),
+
+  -- Attributes
+  timeAccountLog       DATETIME NOT NULL,
+  amountAccountLog     MONEY    NOT NULL
+);
+SELECT *
+FROM Account;
+
+SELECT *
+FROM AccountLog;
+
+DROP PROCEDURE SPTotalSum
+GO
+CREATE PROCEDURE SPTotalSum
+AS
+  BEGIN
+    SELECT SUM(AccountLog.amountAccountLog) AS "AccountLog Total"
+    FROM AccountLog
+    SELECT SUM(Account.balanceAccount) AS "Account Total "
+    FROM Account
+  END
+GO
+EXECUTE SPTotalSum
+
+--1. Lets create SQL for the action ”Nils withdraws 300”.
+-- It consists of one UPDATE (table Account) statement and one INSERT (AccountLog) statement
+--  that both needs to be carried out atomically.
+--  Write the two statements as implicit transations  and execute them. Verify that it works.
+GO
+SELECT *
+FROM Account;
+
+UPDATE Account SET balanceAccount = balanceAccount+300 WHERE nameAccount = 'Nils'
+INSERT INTO AccountLog VALUES (1,getdate(),-300)
+--2.
+
+BEGIN TRANSACTION
+UPDATE Account SET balanceAccount = balanceAccount-600 WHERE nameAccount = 'Nils'
+INSERT INTO AccountLog VALUES (1,getdate(),300)
+COMMIT TRANSACTION
+
+--3.
+GO
+DROP PROCEDURE withdrawNils
+GO
+CREATE PROCEDURE DV1454_adba14.withdrawNils @amount FLOAT, @name VARCHAR(10)
+AS
+  BEGIN
+    DECLARE @accID INT = (SELECT Account.nrAccount FROM Account WHERE nameAccount = @name)
+
+      BEGIN TRANSACTION
+            UPDATE Account SET balanceAccount = balanceAccount-@amount WHERE nameAccount = @name
+            INSERT INTO AccountLog VALUES (@accID,getdate(),-@amount)
+
+
+            IF (SELECT Account.balanceAccount FROM Account WHERE  nameAccount = @name) < 0 OR @amount < 0
+            BEGIN
+                  ROLLBACK
+                  RETURN -1
+            END
+          ELSE
+            BEGIN
+                  COMMIT
+                  RETURN 1
+            END
+
+  END
+GO
+EXECUTE DV1454_adba14.withdrawNils -800,'nils'
+
+SELECT * from Account
